@@ -12,7 +12,7 @@ void	SPI_Print_Data (void);
 // Declaration
 // SPI
 #define			NB_DATAS			1000	// Nb data to receive by frame
-#define			SPI_TIME_OUT		200	// Time between each frame (us)
+#define			SPI_TIME_OUT		20	// Time between each frame (us)
 
 typedef struct	StructSpi{
 	unsigned int	Counter;
