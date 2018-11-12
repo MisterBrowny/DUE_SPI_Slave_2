@@ -10,6 +10,7 @@ void	SPI_Print_Data (void);
 
 
 // Declaration
+unsigned long Time_us;
 // SPI
 #define			NB_DATAS			1000	// Nb data to receive by frame
 #define			SPI_TIME_OUT		20	// Time between each frame (us)
@@ -63,16 +64,19 @@ void setup()
 void loop()
 {
   unsigned char    i;
+
+  Time_us = micros();
+  
 	if (Spi0.Save_Time == true)
 	{
     Spi0.Save_Time = false;
     Spi0.Check_Time_Out = true;
-    Spi0.Last_Time_Rcv = micros();
+    Spi0.Last_Time_Rcv = Time_us;
 	}
 
   if (Spi0.Check_Time_Out == true)
   {
-		if ((micros() - Spi0.Last_Time_Rcv) > SPI_TIME_OUT)
+		if ((Time_us - Spi0.Last_Time_Rcv) > SPI_TIME_OUT)
 		{
       SPI_Mask_Interrupts();
       REG_SPI0_CR = SPI_CR_SWRST;     // reset SPI
