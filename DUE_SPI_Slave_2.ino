@@ -55,7 +55,7 @@ ISR (SPI0_Handler)
 void setup()
 {
   // Initialise la liaison série à 9600 bauds
-  Serial.begin(9600);
+  Serial.begin(115200);
 
 	// SPI initialization
 	SPI_Slave_Initialize(SPI_MODE0);
